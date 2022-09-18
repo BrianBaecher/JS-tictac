@@ -1,0 +1,17 @@
+body{
+    background-color: black;
+}
+
+.board{
+    display: flex;
+    flex-flow: row wrap;
+}
+
+
+.grid{
+    flex: 0 0 33%;
+    border: 1px solid black;
+    min-height: 30vh;
+    background-color: gray;
+    font-size: 1000%;
+}
