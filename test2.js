@@ -9,6 +9,7 @@ const square8 = document.getElementById("8");
 const square9 = document.getElementById("9");
 const xWinCount = document.getElementById("xWinCount");
 const oWinCount = document.getElementById("oWinCount");
+const drawCount = document.getElementById("drawCount");
 const startButton = document.getElementById("button");
 
 function bork() {
@@ -21,6 +22,7 @@ var xArray = [];
 var oArray = [];
 var xWins = 0;
 var oWins = 0;
+var draws = 0;
 
 function timeOut() {
   setTimeout(() => {
@@ -87,7 +89,11 @@ function checkWin(arr) {
     (arr.includes("3") && arr.includes("5") && arr.includes("7")) ||
     (arr.includes("3") && arr.includes("6") && arr.includes("9"))
   ) {
-    return true;
+    return 1;
+  } else if (xArray.length + oArray.length >= 9) {
+    //draws += 0.5;
+    //drawCount.textContent = draws.toString();
+    return 2;
   }
 }
 
@@ -99,13 +105,16 @@ function xMove(x) {
     console.log(xArray);
     removeXListener();
     checkWin(xArray);
-    if (checkWin(xArray) === true) {
+    if (checkWin(xArray) === 1) {
       removeOListener();
       xWins++;
       xWinCount.textContent = xWins.toString();
       console.log(xWinCount);
       gameRunning = false;
       timeOut();
+    } else if (checkWin(oArray) === 2) {
+      draws++;
+      drawCount.textContent = draws.toString();
     } else {
       addOListener();
     }
@@ -122,12 +131,15 @@ function oMove(x) {
     x.target.textContent = "O";
     removeOListener();
     checkWin(oArray);
-    if (checkWin(oArray) === true) {
+    if (checkWin(oArray) === 1) {
       oWins++;
       oWinCount.textContent = oWins.toString();
       console.log(oWinCount);
       gameRunning = false;
       timeOut();
+    } else if (checkWin(oArray) === 2) {
+      draws++;
+      drawCount.textContent = draws.toString();
     } else {
       addXListener();
     }
@@ -151,6 +163,12 @@ function resetBoard() {
   square7.textContent = "";
   square8.textContent = "";
   square9.textContent = "";
+}
+
+function checkDraw(xArr, oArr) {
+  if (xArr.length + oArr.length >= 9) {
+    alert("draw");
+  }
 }
 
 function gameStart() {
