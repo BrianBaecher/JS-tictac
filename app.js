@@ -1,15 +1,6 @@
 const squares = document.querySelectorAll(".grid");
 
-const charArray = [
-  {
-    name: "o",
-    img: "o.png",
-  },
-  {
-    name: "x",
-    img: "x.png",
-  },
-];
+
 
 console.log("ree");
 
@@ -19,20 +10,40 @@ after pushing each x and o selection onto their respective arrays */
 var xArray = [];
 var oArray = [];
 
-function xMove(x) {
+squares.forEach((x) => {
+  x.addEventListener("click", (e) => {
+    xArray.push(x.id);
+    console.log(xArray);
+    x.textContent = "X";
+    squares.forEach((x) => {
+      x.removeEventListener;
+    });
+  });
+});
+
+function xMove() {
+  xArray.push(x.id);
+  console.log(xArray);
+  x.textContent = "X";
+}
+
+/*
+function xMove() {
   squares.forEach((x) => {
     x.addEventListener("click", (e) => {
-      console.log(e.target);
+        xArray.push(x.id)
+        console.log(xArray)
       x.textContent = "X";
-      oMove();
+      squares.forEach((x) => {
+        x.removeEventListener
+      })
     });
   });
 }
 
-function oMove(x) {
+function oMove() {
   squares.forEach((x) => {
     x.addEventListener("click", (e) => {
-      console.log(e.target);
       x.textContent = "O";
       xMove();
     });
@@ -40,3 +51,4 @@ function oMove(x) {
 }
 
 oMove();
+*/
