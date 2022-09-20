@@ -8,13 +8,16 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body class="body">
+    <button id="button">START</button>
     <div class="winCounters">
       <span>X Wins: <span id="xWinCount">0</span> ||</span>
       <span>O Wins: <span id="oWinCount">0</span> ||</span>
       <span>Draws: <span id="drawCount">0</span></span>
     </div>
     <div id="turn"></div>
-    <div id="overlay"></div>
+    <div id="overlay">
+      <div id="block"></div>
+    </div>
     <div class="board">
       <div class="grid" id="1"></div>
       <div class="grid" id="2"></div>
@@ -25,7 +28,6 @@
       <div class="grid" id="7"></div>
       <div class="grid" id="8"></div>
       <div class="grid" id="9"></div>
-      <button id="button">START</button>
     </div>
   </body>
   <script src="test2.js"></script>

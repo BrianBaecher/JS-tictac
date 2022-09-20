@@ -28,6 +28,7 @@ var draws = 0;
 
 function on() {
   document.getElementById("overlay").style.display = "block";
+  overlay.addEventListener("click", off);
 }
 
 function off() {
@@ -125,7 +126,7 @@ function xMove(x) {
       timeOut();
       on();
       overlay.textContent = "X WINS";
-      overlay.addEventListener("click", off);
+      turn.textContent = "";
     } else if (checkWin(oArray) === 2) {
       draws++;
       drawCount.textContent = draws.toString();
@@ -192,4 +193,4 @@ function gameStart() {
   gameRunning = true;
 }
 
-//gameStart();
+//on();
