@@ -11,6 +11,8 @@ const xWinCount = document.getElementById("xWinCount");
 const oWinCount = document.getElementById("oWinCount");
 const drawCount = document.getElementById("drawCount");
 const startButton = document.getElementById("button");
+const turn = document.getElementById("turn");
+const overlay = document.getElementById("overlay");
 
 function bork() {
   console.log("bork");
@@ -23,6 +25,14 @@ var oArray = [];
 var xWins = 0;
 var oWins = 0;
 var draws = 0;
+
+function on() {
+  document.getElementById("overlay").style.display = "block";
+}
+
+function off() {
+  document.getElementById("overlay").style.display = "none";
+}
 
 function timeOut() {
   setTimeout(() => {
@@ -98,6 +108,7 @@ function checkWin(arr) {
 }
 
 function xMove(x) {
+  turn.textContent = "O's turn";
   if (x.target.textContent === "") {
     xArray.push(x.target.id);
     console.log(x.target.id);
@@ -112,6 +123,9 @@ function xMove(x) {
       console.log(xWinCount);
       gameRunning = false;
       timeOut();
+      on();
+      overlay.textContent = "X WINS";
+      overlay.addEventListener("click", off);
     } else if (checkWin(oArray) === 2) {
       draws++;
       drawCount.textContent = draws.toString();
@@ -126,6 +140,7 @@ function xMove(x) {
 }
 
 function oMove(x) {
+  turn.textContent = "X's turn";
   if (x.target.textContent === "") {
     oArray.push(x.target.id);
     x.target.textContent = "O";
@@ -172,6 +187,7 @@ function checkDraw(xArr, oArr) {
 }
 
 function gameStart() {
+  turn.textContent = "X's turn";
   addXListener();
   gameRunning = true;
 }
