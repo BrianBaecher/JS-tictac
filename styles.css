@@ -1,24 +1,29 @@
 body {
   background-color: black;
+  color: bisque;
 }
 
 .board {
   display: flex;
   flex-flow: row wrap;
+  min-width: 60%;
+  margin: 20%;
+  margin-top: 0%;
 }
 
 .grid {
   flex: 0 0 33%;
   border: 1px solid black;
-  min-height: 30vh;
+  min-height: 20vh;
+  min-width: 1%;
   background-color: gray;
   font-size: 1000%;
+  text-align: center;
 }
 
 #overlay {
-  display: flex;
   position: fixed; /* Sit on top of the page content */
-  display: none; /* Hidden by default */
+  display: flex;
   width: 100%; /* Full width (cover the whole page) */
   height: 100%; /* Full height (cover the whole page) */
   top: 0;
@@ -28,15 +33,30 @@ body {
   background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
   z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
   cursor: pointer; /* Add a pointer on hover */
+  text-align: center;
+  vertical-align: super;
 }
 
-#block {
+#box {
+  z-index: 1;
+  width: 200px;
+  height: 200px;
+  background-color: aqua;
+}
+
+#header{
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  height: 100vh;
-  border: 3px solid green;
-  width: 30vw;
-  height: 30vh;
-  background-color: black;
+  margin-top: 5vh;
+}
+#winCounters{
+  padding-bottom: 1rem;
+}
+#button{
+  margin-bottom: 1rem;
+}
+#turn{
+  padding-bottom: 1rem;
 }

@@ -13,6 +13,7 @@ const drawCount = document.getElementById("drawCount");
 const startButton = document.getElementById("button");
 const turn = document.getElementById("turn");
 const overlay = document.getElementById("overlay");
+turn.textContent = "Current move and match results are shown here (after you hit start)"
 
 function bork() {
   console.log("bork");
@@ -26,14 +27,6 @@ var xWins = 0;
 var oWins = 0;
 var draws = 0;
 
-function on() {
-  document.getElementById("overlay").style.display = "block";
-  overlay.addEventListener("click", off);
-}
-
-function off() {
-  document.getElementById("overlay").style.display = "none";
-}
 
 function timeOut() {
   setTimeout(() => {
@@ -102,14 +95,11 @@ function checkWin(arr) {
   ) {
     return 1;
   } else if (xArray.length + oArray.length >= 9) {
-    //draws += 0.5;
-    //drawCount.textContent = draws.toString();
     return 2;
   }
 }
 
 function xMove(x) {
-  turn.textContent = "O's turn";
   if (x.target.textContent === "") {
     xArray.push(x.target.id);
     console.log(x.target.id);
@@ -124,13 +114,14 @@ function xMove(x) {
       console.log(xWinCount);
       gameRunning = false;
       timeOut();
-      on();
-      overlay.textContent = "X WINS";
-      turn.textContent = "";
+      turn.textContent = "X WINS";
     } else if (checkWin(oArray) === 2) {
       draws++;
       drawCount.textContent = draws.toString();
+      turn.textContent = "DRAW"
+      timeOut();
     } else {
+      turn.textContent = "O's turn";
       addOListener();
     }
   } else if (x.target.textContent === "O") {
@@ -141,7 +132,6 @@ function xMove(x) {
 }
 
 function oMove(x) {
-  turn.textContent = "X's turn";
   if (x.target.textContent === "") {
     oArray.push(x.target.id);
     x.target.textContent = "O";
@@ -153,10 +143,13 @@ function oMove(x) {
       console.log(oWinCount);
       gameRunning = false;
       timeOut();
+      turn.textContent = "O WINS"
     } else if (checkWin(oArray) === 2) {
       draws++;
       drawCount.textContent = draws.toString();
+      turn.textContent = "DRAW"
     } else {
+      turn.textContent = "X's turn";
       addXListener();
     }
   } else if (x.target.textContent === "X") {
