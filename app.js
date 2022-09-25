@@ -31,7 +31,7 @@ var draws = 0;
 function timeOut() {
   setTimeout(() => {
     resetBoard();
-  }, 3000);
+  }, 1000);
 }
 
 function addXListener() {
